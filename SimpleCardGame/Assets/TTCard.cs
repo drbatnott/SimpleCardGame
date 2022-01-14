@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TTCard 
+public class TTCard
 {
-    string imageName;
+    int imageNumber;
     class Properties
     {
         public string name;
@@ -16,11 +16,11 @@ public class TTCard
         }
     }
     List<Properties> thisCardProperties;
-    public TTCard(string iN, string[] n, int[] v)
+    public TTCard(int iN, string[] n, int[] v)
     {
         int count = n.Length;
         thisCardProperties = new List<Properties>();
-        imageName = iN;
+        imageNumber = iN;
         for (int i = 0; i < count; i++)
         {
             Properties p = new Properties(n[i],v[i]);
