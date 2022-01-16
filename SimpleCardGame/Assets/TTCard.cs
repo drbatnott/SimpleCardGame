@@ -5,6 +5,7 @@ using UnityEngine;
 public class TTCard
 {
     int imageNumber;
+    string imageName;
     class Properties
     {
         public string name;
@@ -16,9 +17,10 @@ public class TTCard
         }
     }
     List<Properties> thisCardProperties;
-    public TTCard(int iN, string[] n, int[] v)
+    public TTCard(string cardName,int iN, string[] n, int[] v)
     {
         int count = n.Length;
+        imageName = cardName;
         thisCardProperties = new List<Properties>();
         imageNumber = iN;
         for (int i = 0; i < count; i++)
@@ -31,7 +33,7 @@ public class TTCard
     {
         return thisCardProperties[i].name;
     }
-    public int BestPropertyValue()
+    public int BestPropertyNumber()
     {
         int n = -1;
         int i = 0;
@@ -45,4 +47,17 @@ public class TTCard
         }
         return i;
     }
+    public int BestPropertyValue()
+    {
+        return thisCardProperties[BestPropertyNumber()].value;
+    }
+    public int CardNo()
+    {
+        return imageNumber;
+    }
+    public string CardName()
+    {
+        return imageName;
+    }
+    
 }
