@@ -15,6 +15,9 @@ public class Pack : MonoBehaviour
     int countOfImages;
     public GameObject cardSprite;
     SpriteRenderer spriteRenderer;
+    string[] propertyNames;
+    public List<TTCard> playerHand;
+    public List<TTCard> computerHand;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,14 +28,19 @@ public class Pack : MonoBehaviour
         ttCards = new List<TTCard>();
         tr = new StreamReader("C:/Users/peter/source/repos/SimpleCardGame/SimpleCardGame/Assets/GameDefinitions.txt");
         string input;
-        string[] propertyNames;
+       
         input = tr.ReadLine();
-        string propertyBit = input.Substring(19);
+        string propertyBit = input.Substring(13);
+        //Bug found probably the index is wrong. As a test I will display propertyBit to see
+        //It should have been 13 first I changed it to 12 but that was also wrong I forgot about the tab.
+        //Originally I had put 19 - for the previous example
+        display.text = "The Property Bit " + propertyBit + "\n";
         propertyNames = propertyBit.Split('\t');
        // int i = propertyNames.Length;
-       display.text = "Card Number\tCard Name\t" ;
-       // display.text += "\n";
-        foreach(string s in propertyNames)
+       display.text += "Card Number\tCard Name\t" ;
+       
+        // display.text += "\n";
+        foreach (string s in propertyNames)
             display.text += s + "\t";
         display.text += "\n";
         while ((input=tr.ReadLine())!= null)
@@ -49,15 +57,16 @@ public class Pack : MonoBehaviour
                 display.text += v + "\t";
             }
             display.text += "\n";
-            TTCard tT = new TTCard(cardName,imageNumber, propertyNames, vs);
+            TTCard tT = new TTCard(cardName,imageNumber, vs);
             ttCards.Add(tT);
         }
         tr.Close();
         foreach(TTCard tTCard in ttCards)
         {
-            display.text += "Bird " + tTCard.CardName() + " Best Property " + tTCard.PropertyName(tTCard.BestPropertyNumber());
+            display.text += "Bird " + tTCard.CardName() + " Best Property " + propertyNames[tTCard.BestPropertyNumber()];
             display.text += " number " + tTCard.BestPropertyNumber() + " value " + tTCard.BestPropertyValue() + "\n";
         }
+
     }
 
     // Update is called once per frame

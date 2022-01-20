@@ -21,5 +21,8 @@ public class ButtonActions : MonoBehaviour
     {
         SceneManager.LoadScene("RulesScene");
     }
-    
+    public void OnCloseGame()
+    {
+        Application.Quit();
+    }
 }

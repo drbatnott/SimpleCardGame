@@ -18,7 +18,7 @@ public class GameStartScript : MonoBehaviour
         gameStart.SetActive(false);
         gameRules.SetActive(false);
         newUser.SetActive(false);
-        if (lineRead.Contains("$default_user"))
+        if (lineRead.Contains("$default"))
         {
             userMessage.text = "Hello New User";
             SceneManager.LoadScene("UseerDetails");
