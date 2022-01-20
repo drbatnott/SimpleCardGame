@@ -18,6 +18,7 @@ public class Pack : MonoBehaviour
     string[] propertyNames;
     public List<TTCard> playerHand;
     public List<TTCard> computerHand;
+    float speed = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,13 +67,27 @@ public class Pack : MonoBehaviour
             display.text += "Bird " + tTCard.CardName() + " Best Property " + propertyNames[tTCard.BestPropertyNumber()];
             display.text += " number " + tTCard.BestPropertyNumber() + " value " + tTCard.BestPropertyValue() + "\n";
         }
-
+        System.Random r = new System.Random();
+        int cardToDeal = r.Next(0, ttCards.Count);
+        spriteRenderer.sprite = sprites[cardToDeal];
+        display.text += "chosen card " + cardToDeal;
+        playerHand.Add(ttCards[cardToDeal]);
+        ttCards.RemoveAt(cardToDeal);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        /*
+        Transform trans = cardSprite.GetComponent<Transform>();
+        Vector3 pos = trans.position;
+        System.Random r = new System.Random(); 
+        int x = r.Next(-4, 5);
+        pos.x += x * speed ;
+        if (pos.x > 9.6f) pos.x = 0;
+        if (pos.x < -9.6f) pos.x = 0;
+        trans.position = pos;
+        */
     }
     public void OnClickDeal()
     {
