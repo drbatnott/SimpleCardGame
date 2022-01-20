@@ -20,5 +20,6 @@ public class ButtonActions : MonoBehaviour
     public void OnRulesButtonClick()
     {
         SceneManager.LoadScene("RulesScene");
-    } 
+    }
+    
 }

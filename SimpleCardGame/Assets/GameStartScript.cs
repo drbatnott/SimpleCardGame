@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class GameStartScript : MonoBehaviour
 {
     public Text userMessage;
@@ -21,7 +21,8 @@ public class GameStartScript : MonoBehaviour
         if (lineRead.Contains("$default_user"))
         {
             userMessage.text = "Hello New User";
-            newUser.SetActive(true);
+            SceneManager.LoadScene("UseerDetails");
+            //newUser.SetActive(true);
         }
         else
         {
