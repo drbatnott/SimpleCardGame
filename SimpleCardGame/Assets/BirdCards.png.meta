@@ -92,6 +92,81 @@ TextureImporter:
   - first:
       213: 7197774760739556727
     second: BirdCards_29
+  - first:
+      213: -8122905368422196204
+    second: BirdCards_30
+  - first:
+      213: 2658906656093304434
+    second: BirdCards_31
+  - first:
+      213: -3711768192767953021
+    second: BirdCards_32
+  - first:
+      213: 5993182136482204980
+    second: BirdCards_33
+  - first:
+      213: 6423149352604799043
+    second: BirdCards_34
+  - first:
+      213: 2268338729596230521
+    second: BirdCards_35
+  - first:
+      213: 2174061176609962829
+    second: BirdCards_36
+  - first:
+      213: -5822110188036516033
+    second: BirdCards_37
+  - first:
+      213: -2748254226680532897
+    second: BirdCards_38
+  - first:
+      213: -1973178434990309521
+    second: BirdCards_39
+  - first:
+      213: -1124059712617054456
+    second: BirdCards_40
+  - first:
+      213: 6753411562891902701
+    second: BirdCards_41
+  - first:
+      213: -7241816959817616623
+    second: BirdCards_42
+  - first:
+      213: 5075649079674202644
+    second: BirdCards_43
+  - first:
+      213: 1252585723734715827
+    second: BirdCards_44
+  - first:
+      213: -6188993678815327226
+    second: BirdCards_45
+  - first:
+      213: -4890743525656761768
+    second: BirdCards_46
+  - first:
+      213: -510158649845354406
+    second: BirdCards_47
+  - first:
+      213: 5170007870307535513
+    second: BirdCards_48
+  - first:
+      213: 1890416264348463377
+    second: BirdCards_49
+  - first:
+      213: -2318905644649766924
+    second: BirdCards_50
+  - first:
+      213: -9099479243864228507
+    second: BirdCards_51
+  - first:
+      213: 6107142579900965584
+    second: BirdCards_52
+  - first:
+      213: -1019008351614673500
+    second: BirdCards_53
+  - first:
+      213: -8605212929699026632
+    second: BirdCards_54
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -221,9 +296,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 480
-        width: 128
-        height: 240
+        y: 656
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,10 +316,10 @@ TextureImporter:
       name: BirdCards_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 480
-        width: 128
-        height: 240
+        x: 240
+        y: 656
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,10 +337,10 @@ TextureImporter:
       name: BirdCards_2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 480
-        width: 128
-        height: 240
+        x: 480
+        y: 656
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,10 +358,10 @@ TextureImporter:
       name: BirdCards_3
       rect:
         serializedVersion: 2
-        x: 384
-        y: 480
-        width: 128
-        height: 240
+        x: 720
+        y: 656
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,10 +379,10 @@ TextureImporter:
       name: BirdCards_4
       rect:
         serializedVersion: 2
-        x: 512
-        y: 480
-        width: 128
-        height: 240
+        x: 960
+        y: 656
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,10 +400,10 @@ TextureImporter:
       name: BirdCards_5
       rect:
         serializedVersion: 2
-        x: 640
-        y: 480
-        width: 128
-        height: 240
+        x: 0
+        y: 592
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,10 +421,10 @@ TextureImporter:
       name: BirdCards_6
       rect:
         serializedVersion: 2
-        x: 768
-        y: 480
-        width: 128
-        height: 240
+        x: 240
+        y: 592
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,10 +442,10 @@ TextureImporter:
       name: BirdCards_7
       rect:
         serializedVersion: 2
-        x: 896
-        y: 480
-        width: 128
-        height: 240
+        x: 480
+        y: 592
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -388,10 +463,10 @@ TextureImporter:
       name: BirdCards_8
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 480
-        width: 128
-        height: 240
+        x: 720
+        y: 592
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,10 +484,10 @@ TextureImporter:
       name: BirdCards_9
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 480
-        width: 128
-        height: 240
+        x: 960
+        y: 592
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,9 +506,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 240
-        width: 128
-        height: 240
+        y: 528
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -451,10 +526,10 @@ TextureImporter:
       name: BirdCards_11
       rect:
         serializedVersion: 2
-        x: 128
-        y: 240
-        width: 128
-        height: 240
+        x: 240
+        y: 528
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -472,10 +547,10 @@ TextureImporter:
       name: BirdCards_12
       rect:
         serializedVersion: 2
-        x: 256
-        y: 240
-        width: 128
-        height: 240
+        x: 480
+        y: 528
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -493,10 +568,10 @@ TextureImporter:
       name: BirdCards_13
       rect:
         serializedVersion: 2
-        x: 384
-        y: 240
-        width: 128
-        height: 240
+        x: 720
+        y: 528
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -514,10 +589,10 @@ TextureImporter:
       name: BirdCards_14
       rect:
         serializedVersion: 2
-        x: 512
-        y: 240
-        width: 128
-        height: 240
+        x: 960
+        y: 528
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -535,10 +610,10 @@ TextureImporter:
       name: BirdCards_15
       rect:
         serializedVersion: 2
-        x: 640
-        y: 240
-        width: 128
-        height: 240
+        x: 0
+        y: 464
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -556,10 +631,10 @@ TextureImporter:
       name: BirdCards_16
       rect:
         serializedVersion: 2
-        x: 768
-        y: 240
-        width: 128
-        height: 240
+        x: 240
+        y: 464
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -577,10 +652,10 @@ TextureImporter:
       name: BirdCards_17
       rect:
         serializedVersion: 2
-        x: 896
-        y: 240
-        width: 128
-        height: 240
+        x: 480
+        y: 464
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -598,10 +673,10 @@ TextureImporter:
       name: BirdCards_18
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 240
-        width: 128
-        height: 240
+        x: 720
+        y: 464
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -619,10 +694,10 @@ TextureImporter:
       name: BirdCards_19
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 240
-        width: 128
-        height: 240
+        x: 960
+        y: 464
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -641,9 +716,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 128
-        height: 240
+        y: 400
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -661,10 +736,10 @@ TextureImporter:
       name: BirdCards_21
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 240
+        x: 240
+        y: 400
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -682,10 +757,10 @@ TextureImporter:
       name: BirdCards_22
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 240
+        x: 480
+        y: 400
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -703,10 +778,10 @@ TextureImporter:
       name: BirdCards_23
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 240
+        x: 720
+        y: 400
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -724,10 +799,10 @@ TextureImporter:
       name: BirdCards_24
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
-        width: 128
-        height: 240
+        x: 960
+        y: 400
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -745,10 +820,10 @@ TextureImporter:
       name: BirdCards_25
       rect:
         serializedVersion: 2
-        x: 640
-        y: 0
-        width: 128
-        height: 240
+        x: 0
+        y: 336
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -766,10 +841,10 @@ TextureImporter:
       name: BirdCards_26
       rect:
         serializedVersion: 2
-        x: 768
-        y: 0
-        width: 128
-        height: 240
+        x: 240
+        y: 336
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -787,10 +862,10 @@ TextureImporter:
       name: BirdCards_27
       rect:
         serializedVersion: 2
-        x: 896
-        y: 0
-        width: 128
-        height: 240
+        x: 480
+        y: 336
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -808,10 +883,10 @@ TextureImporter:
       name: BirdCards_28
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 128
-        height: 240
+        x: 720
+        y: 336
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -829,10 +904,10 @@ TextureImporter:
       name: BirdCards_29
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 128
-        height: 240
+        x: 960
+        y: 336
+        width: 240
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -842,6 +917,531 @@ TextureImporter:
       bones: []
       spriteID: 77d472b6202a3e360800000000000000
       internalID: 7197774760739556727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41cd41bba94a54f80800000000000000
+      internalID: -8122905368422196204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_31
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 272
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276fc57248556e420800000000000000
+      internalID: 2658906656093304434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_32
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 272
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 387f8759e762d7cc0800000000000000
+      internalID: -3711768192767953021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_33
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 272
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43d0d3f566f0c2350800000000000000
+      internalID: 5993182136482204980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_34
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 272
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3401a4d0e4c932950800000000000000
+      internalID: 6423149352604799043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b18df6e02ca7f10800000000000000
+      internalID: 2268338729596230521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_36
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 208
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4bfdc71f11db2e10800000000000000
+      internalID: 2174061176609962829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_37
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 208
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3796ee71a5b33fa0800000000000000
+      internalID: -5822110188036516033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_38
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 208
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f50bd3a775d3cd9d0800000000000000
+      internalID: -2748254226680532897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_39
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 208
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ff0ffeaacdd94e0800000000000000
+      internalID: -1973178434990309521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80ff12b95a98660f0800000000000000
+      internalID: -1124059712617054456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_41
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 144
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deeff2c0900f8bd50800000000000000
+      internalID: 6753411562891902701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_42
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 144
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 113fba508d5ef7b90800000000000000
+      internalID: -7241816959817616623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_43
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 144
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ae48e22f3507640800000000000000
+      internalID: 5075649079674202644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_44
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 144
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bdeee94414126110800000000000000
+      internalID: 1252585723734715827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c03113a074c1aa0800000000000000
+      internalID: -6188993678815327226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_46
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 80
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85aefa9fca6902cb0800000000000000
+      internalID: -4890743525656761768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_47
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 80
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50ffd0396d8be8f0800000000000000
+      internalID: -510158649845354406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_48
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 80
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a87a324ce8fb740800000000000000
+      internalID: 5170007870307535513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_49
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 80
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1117c1a939b1c3a10800000000000000
+      internalID: 1890416264348463377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff900f2a9791dfd0800000000000000
+      internalID: -2318905644649766924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_51
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 16
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56dbe6cb6d728b180800000000000000
+      internalID: -9099479243864228507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_52
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 16
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d2e8a3c1dde0c450800000000000000
+      internalID: 6107142579900965584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_53
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 16
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4add9da9d41cbd1f0800000000000000
+      internalID: -1019008351614673500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdCards_54
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 16
+        width: 240
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839e0bcce64249880800000000000000
+      internalID: -8605212929699026632
       vertices: []
       indices: 
       edges: []
