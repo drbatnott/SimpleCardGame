@@ -71,5 +71,9 @@ public class TTCard
     {
         return imageName;
     }
+    public int CardPropertyValue(int j)
+    {
+        return thisCardProperties[j].value;
+    }
     
 }

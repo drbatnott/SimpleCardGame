@@ -30,6 +30,7 @@ public class Pack : MonoBehaviour
     int playerToDealTo = 0;
     GameObject dealingCard;
     bool cardDealAnimation;
+    public GameObject[] choiceButtons;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,23 +45,24 @@ public class Pack : MonoBehaviour
         playerHandCardObjects = new List<GameObject>();
         computerHandCardObjects = new List<GameObject>();
         computerHand = new List<TTCard>();
-        tr = new StreamReader("C:/Users/peter/source/repos/SimpleCardGame/SimpleCardGame/Assets/GameDefinitions.txt");
+        tr = new StreamReader("C:/Users/peter/source/repos/SimpleCardGame/SimpleCardGame/Assets/GameDefinitions.csv");
         string input;
        
         input = tr.ReadLine();
-        string propertyBit = input.Substring(13);
+        string propertyBit = input.Substring(19);
         //Bug found probably the index is wrong. As a test I will display propertyBit to see
         //It should have been 13 first I changed it to 12 but that was also wrong I forgot about the tab.
         //Originally I had put 19 - for the previous example
         //display.text = "The Property Bit " + propertyBit + "\n";
-        propertyNames = propertyBit.Split('\t');
+        //now reverting to previous example so back to 19
+        propertyNames = propertyBit.Split(',');
        // int i = propertyNames.Length;
        //display.text += "Card Number\tCard Name\t" ;
        
         // display.text += "\n";
-        /*foreach (string s in propertyNames)
-            display.text += s + "\t";
-        display.text += "\n"; */
+        foreach (string s in propertyNames)
+            display.text += s + ",";
+        display.text += "\n";/* */
         while ((input=tr.ReadLine())!= null)
         {
             CreateACardFromTheFileDescription(input);
@@ -107,7 +109,7 @@ public class Pack : MonoBehaviour
 
     void CreateACardFromTheFileDescription(string input)
     {
-        string[] content = input.Split('\t');
+        string[] content = input.Split(',');
         int imageNumber = Int16.Parse(content[0]);
 
         string cardName = content[1];
@@ -134,10 +136,33 @@ public class Pack : MonoBehaviour
         spriteRenderer.sprite = sprites[imageNo];
     }
     */
-
+    public void OnChoiceClick(int i)
+    {
+        secondTest.text += "\nCard property choice " + i;
+        secondTest.text += "\nProperty name " + propertyNames[i];
+        int j = playerHand.Count - 1;
+        int v = playerHand[j].CardPropertyValue(i);
+        secondTest.text += "\nProperty value " + v;
+        int k = computerHand.Count - 1;
+        Vector3 pos = computerHandCardObjects[k].transform.position;
+        pos.x += 3f;
+        computerHandCardObjects[k].transform.position = pos;
+        computerHandCardObjects[k].SetActive(true);
+        int cv = computerHand[k].CardPropertyValue(i);
+        secondTest.text += "\nComputer's value for " + propertyNames[i] + "is " + cv;
+    }
     public void OnClickPlay()
     {
-
+        
+        int i = playerHand.Count - 1;
+        Vector3 pos = playerHandCardObjects[i].transform.position;
+        pos.x += 3f;
+        playerHandCardObjects[i].transform.position = pos;
+        playerHandCardObjects[i].SetActive(true);
+        foreach (GameObject b in choiceButtons)
+        {
+            b.SetActive(true);
+        }
     }
     /// <summary>
     /// Deal a card to the screen but also add the card to the player hand
