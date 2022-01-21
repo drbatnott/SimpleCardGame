@@ -21,20 +21,24 @@ public class Pack : MonoBehaviour
     public List<TTCard> computerHand;
     List<GameObject> playerHandCardObjects;
     List<GameObject> computerHandCardObjects;
-    float speed = 0.1f;
+    float speed = 0.025f;
     public Vector3 cardPosOnTable;
     int cardsDealt;
-    public GameObject button;
+    public GameObject dealButton;
+    public GameObject playButton;
     int totalPlayerNumbers = 2;
     int playerToDealTo = 0;
+    GameObject dealingCard;
+    bool cardDealAnimation;
     // Start is called before the first frame update
     void Start()
     {
         countOfImages = sprites.Length;
+        cardDealAnimation = false;
         //imageNo = 0;
         cardsDealt = 0;
         spriteRenderer = cardSprite.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = sprites[0];
+        //spriteRenderer.sprite = sprites[0];
         ttCards = new List<TTCard>();
         playerHand = new List<TTCard>();
         playerHandCardObjects = new List<GameObject>();
@@ -84,6 +88,21 @@ public class Pack : MonoBehaviour
         if (pos.x < -9.6f) pos.x = 0;
         trans.position = pos;
         */
+        Vector3 targetPosition = cardPosOnTable;
+       if(playerToDealTo == 0)
+        { 
+            targetPosition.y = -cardPosOnTable.y; 
+        }
+        if (cardDealAnimation)
+        {
+            Vector3 pos = dealingCard.transform.position;
+            if (pos.y > targetPosition.y) pos.y -= speed;
+            else pos.y += speed;
+            dealingCard.transform.position = pos;
+            float diff = Math.Abs(targetPosition.y - pos.y);
+            if (diff < 0.1) cardDealAnimation = false;
+        } 
+            
     }
 
     void CreateACardFromTheFileDescription(string input)
@@ -115,6 +134,11 @@ public class Pack : MonoBehaviour
         spriteRenderer.sprite = sprites[imageNo];
     }
     */
+
+    public void OnClickPlay()
+    {
+
+    }
     /// <summary>
     /// Deal a card to the screen but also add the card to the player hand
     /// </summary>
@@ -122,7 +146,7 @@ public class Pack : MonoBehaviour
     {
         System.Random r = new System.Random();
         int cardToDeal = r.Next(0, ttCards.Count);
-        spriteRenderer.sprite = sprites[cardToDeal];
+        //spriteRenderer.sprite = sprites[cardToDeal];
         display.text = "chosen card " + cardToDeal;
         
         display.text += "\n" + "Cards Left in pack " + ttCards.Count + " cards in player hand " + playerHand.Count;
@@ -136,15 +160,15 @@ public class Pack : MonoBehaviour
         Transform newCardTransform = newCard.transform;
         Vector3 pos = cardPosOnTable;//newCardTransform.position;
         //This should position it at the centre of the play area
-
-        pos.x += cardsDealt * 1.6f;
+        dealingCard = GameObject.Instantiate(cardSprite);
+        //pos.x += cardsDealt * 1.6f;
         cardsDealt++;
         if(playerToDealTo == 0)
         {
-            pos.y = -1.5f;
+            pos.y = -3.5f;
         }
         else
-            pos.y = 1.5f;
+            pos.y = 3.5f;
         newCard.transform.position = pos;
         SpriteRenderer newCardSR = newCard.GetComponent<SpriteRenderer>();
         //I was removing the card from the pack but then choosing the sprite from the sprites
@@ -162,7 +186,7 @@ public class Pack : MonoBehaviour
         {
             computerHandCardObjects.Add(newCard);
         }
-        
+        newCard.SetActive(false);
         //remove the card from the pack
         ttCards.RemoveAt(cardToDeal);
         //Test that we have one less card in the pack and one card in the hand
@@ -172,8 +196,14 @@ public class Pack : MonoBehaviour
             secondTest.text += " " + tt.CardNo();
         }
         secondTest.text += "\n";
-        if (ttCards.Count < 1) button.SetActive(false);
+        if (ttCards.Count < 1)
+        {
+            dealButton.SetActive(false);
+            playButton.SetActive(true);
+            cardSprite.SetActive(false);
+        }
         if (playerToDealTo < 1) playerToDealTo++;
         else playerToDealTo = 0;
+        cardDealAnimation = true;
     }
 }
