@@ -21,7 +21,7 @@ public class Pack : MonoBehaviour
     public List<TTCard> computerHand;
     List<GameObject> playerHandCardObjects;
     List<GameObject> computerHandCardObjects;
-    float speed = 0.025f;
+    float speed = 0.05f;
     public Vector3 cardPosOnTable;
     int cardsDealt;
     public GameObject dealButton;
@@ -169,66 +169,83 @@ public class Pack : MonoBehaviour
     /// </summary>
     public void OnClickDeal()
     {
-        System.Random r = new System.Random();
-        int cardToDeal = r.Next(0, ttCards.Count);
-        //spriteRenderer.sprite = sprites[cardToDeal];
-        display.text = "chosen card " + cardToDeal;
-        
-        display.text += "\n" + "Cards Left in pack " + ttCards.Count + " cards in player hand " + playerHand.Count;
-        //Add a card to the player hand
-        if (playerToDealTo == 0)
-            playerHand.Add(ttCards[cardToDeal]);
-        else
-            computerHand.Add(ttCards[cardToDeal]);
-        //The next lines should create a new object of the prototypeCard type
-        GameObject newCard = GameObject.Instantiate(prototypeCard);
-        Transform newCardTransform = newCard.transform;
-        Vector3 pos = cardPosOnTable;//newCardTransform.position;
-        //This should position it at the centre of the play area
-        dealingCard = GameObject.Instantiate(cardSprite);
-        //pos.x += cardsDealt * 1.6f;
-        cardsDealt++;
-        if(playerToDealTo == 0)
+        bool finished = false;
+        cardDealAnimation = false;
+        while (!finished)
         {
-            pos.y = -3.5f;
+            display.text += "finished " + finished + " animation " + cardDealAnimation;
+            
+            if (!cardDealAnimation)
+            {
+                System.Random r = new System.Random();
+                int cardToDeal = r.Next(0, ttCards.Count);
+                //spriteRenderer.sprite = sprites[cardToDeal];
+                cardsDealt++;
+                display.text += "\nCards Dealt " + cardsDealt;
+                display.text += "\nchosen card " + cardToDeal;
+
+                display.text += "\n" + "Cards Left in pack " + ttCards.Count + " cards in player hand " + playerHand.Count;
+                //Add a card to the player hand
+                if (playerToDealTo == 0)
+                    playerHand.Add(ttCards[cardToDeal]);
+                else
+                    computerHand.Add(ttCards[cardToDeal]);
+                //The next lines should create a new object of the prototypeCard type
+                GameObject newCard = GameObject.Instantiate(prototypeCard);
+                Transform newCardTransform = newCard.transform;
+                Vector3 pos = cardPosOnTable;//newCardTransform.position;
+                                             //This should position it at the centre of the play area
+                dealingCard = GameObject.Instantiate(cardSprite);
+                //pos.x += cardsDealt * 1.6f;
+                cardsDealt++;
+                if (playerToDealTo == 0)
+                {
+                    pos.y = -3.5f;
+                }
+                else
+                    pos.y = 3.5f;
+                newCard.transform.position = pos;
+                SpriteRenderer newCardSR = newCard.GetComponent<SpriteRenderer>();
+                //I was removing the card from the pack but then choosing the sprite from the sprites
+                //instead I should use the sprite for the appropriate card number!
+                int cSpriteN = ttCards[cardToDeal].CardNo();
+                //newCardSR.sprite = sprites[cardToDeal]
+                //what I actually needed was
+                newCardSR.sprite = sprites[cSpriteN];
+                //add the newCard to the list of GameObject Cards
+                if (playerToDealTo == 0)
+                {
+                    playerHandCardObjects.Add(newCard);
+                }
+                else
+                {
+                    computerHandCardObjects.Add(newCard);
+                }
+                newCard.SetActive(false);
+                //remove the card from the pack
+                ttCards.RemoveAt(cardToDeal);
+                //Test that we have one less card in the pack and one card in the hand
+                display.text += "\nCards Left in pack " + ttCards.Count + " cards in player hand " + playerHand.Count + " cards in computer hand " + computerHand.Count;
+                foreach (TTCard tt in ttCards)
+                {
+                    secondTest.text += " " + tt.CardNo();
+                }
+                secondTest.text += "\n";
+                if (ttCards.Count < 1)
+                {
+                    dealButton.SetActive(false);
+                    playButton.SetActive(true);
+                    cardSprite.SetActive(false);
+                    finished = true;
+                }
+                if (playerToDealTo < 1) playerToDealTo++;
+                else
+                {
+                    playerToDealTo = 0;
+                    
+                }
+                cardDealAnimation = true;
+            }
         }
-        else
-            pos.y = 3.5f;
-        newCard.transform.position = pos;
-        SpriteRenderer newCardSR = newCard.GetComponent<SpriteRenderer>();
-        //I was removing the card from the pack but then choosing the sprite from the sprites
-        //instead I should use the sprite for the appropriate card number!
-        int cSpriteN = ttCards[cardToDeal].CardNo();
-        //newCardSR.sprite = sprites[cardToDeal]
-        //what I actually needed was
-        newCardSR.sprite = sprites[cSpriteN];
-        //add the newCard to the list of GameObject Cards
-        if(playerToDealTo == 0)
-        {
-            playerHandCardObjects.Add(newCard);
-        }
-        else
-        {
-            computerHandCardObjects.Add(newCard);
-        }
-        newCard.SetActive(false);
-        //remove the card from the pack
-        ttCards.RemoveAt(cardToDeal);
-        //Test that we have one less card in the pack and one card in the hand
-        display.text += "\nCards Left in pack " + ttCards.Count + " cards in player hand " + playerHand.Count + " cards in computer hand " + computerHand.Count;
-        foreach(TTCard tt in ttCards)
-        {
-            secondTest.text += " " + tt.CardNo();
-        }
-        secondTest.text += "\n";
-        if (ttCards.Count < 1)
-        {
-            dealButton.SetActive(false);
-            playButton.SetActive(true);
-            cardSprite.SetActive(false);
-        }
-        if (playerToDealTo < 1) playerToDealTo++;
-        else playerToDealTo = 0;
-        cardDealAnimation = true;
     }
 }
