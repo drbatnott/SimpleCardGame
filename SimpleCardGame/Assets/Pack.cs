@@ -34,6 +34,7 @@ public class Pack : MonoBehaviour
     bool cardDealt;
     int goNumber;
     bool playerWin, computerWin, tie;
+    public Vector3 playerShow,computerShow;
     // Start is called before the first frame update
     void Start()
     {
@@ -166,6 +167,9 @@ public class Pack : MonoBehaviour
     }
     public void OnChoiceClick(int i)
     {
+        int ct = computerHandCardObjects.Count -1;
+        computerHandCardObjects[ct].SetActive(true);
+        computerHandCardObjects[ct].transform.position = computerShow;
         secondTest.text += "\nCard property choice " + i;
         secondTest.text += "\nProperty name " + propertyNames[i];
         int j = playerHand.Count - 1;
@@ -208,11 +212,44 @@ public class Pack : MonoBehaviour
                 computerWin = true;
                 playerWin = tie = false;
                 goNumber = 1;
-                
+                int ib = playerHand.Count - 1;
+                TTCard cardWon = playerHand[ib];
+                playerHand.RemoveAt(ib);
+                computerHand.Insert(0, cardWon);
+                GameObject oldTopObject = computerHandCardObjects[k];
+                GameObject cardWonObject = playerHandCardObjects[ib];
+                playerHandCardObjects.RemoveAt(ib);
+                computerHandCardObjects.RemoveAt(k);
+                computerHandCardObjects.Insert(0, cardWonObject);
+                computerHandCardObjects.Insert(0, oldTopObject);
+                int top = computerHand.Count - 1;
+                TTCard oldTop = computerHand[top];
+                computerHand.RemoveAt(top);
+                computerHand.Insert(0, oldTop);
+                oldTopObject.SetActive(false);
+                cardWonObject.SetActive(false);
+
             }
             else
             {
                 display.text += "\nThat one is a draw";
+                int handTop = playerHand.Count - 1;
+                TTCard playerTop = playerHand[handTop];
+                GameObject playerCard = playerHandCardObjects[handTop];
+                playerHand.RemoveAt(handTop);
+                playerHand.Insert(0, playerTop);
+                playerHandCardObjects.RemoveAt(handTop);
+                playerHandCardObjects.Insert(0, playerCard);
+                handTop = computerHand.Count - 1;
+                TTCard computerTop = computerHand[handTop];
+                GameObject computerCard = computerHandCardObjects[handTop];
+                computerHand.RemoveAt(handTop);
+                computerHand.Insert(0, computerTop);
+               
+                computerHandCardObjects.RemoveAt(handTop);
+                computerHandCardObjects.Insert(0, computerCard);
+                computerCard.SetActive(false);
+                playerCard.SetActive(false);
                 playerWin = computerWin = false;
                 tie = true;
                 goNumber = 1;
@@ -223,21 +260,30 @@ public class Pack : MonoBehaviour
     }
     public void OnClickPlay()
     {
-        if (goNumber == 0)
+        if (computerHand.Count > 0 && playerHand.Count > 0)
         {
-            int i = playerHand.Count - 1;
-            Vector3 pos = playerHandCardObjects[i].transform.position;
-            pos.x += 3f;
-            playerHandCardObjects[i].transform.position = pos;
-            playerHandCardObjects[i].SetActive(true);
-            foreach (GameObject b in choiceButtons)
+            if (goNumber == 0)
             {
-                b.SetActive(true);
+                int i = playerHand.Count - 1;
+                Vector3 pos = playerShow;// playerHandCardObjects[i].transform.position;
+                //pos.x += 3f;
+                playerHandCardObjects[i].transform.position = pos;
+                playerHandCardObjects[i].SetActive(true);
+                foreach (GameObject b in choiceButtons)
+                {
+                    b.SetActive(true);
+                }
+            }
+            else
+            {
+                ComputerGo();
             }
         }
         else
         {
-
+            playButton.SetActive(false);
+            display.text = "You have " + playerHand.Count + " cards and computer has " +
+                computerHand.Count + " cards. Game Over";
         }
     }
 
