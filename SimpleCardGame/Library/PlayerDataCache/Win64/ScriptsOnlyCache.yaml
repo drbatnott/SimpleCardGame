@@ -1,9 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - ButtonActions
-    - GameStartScript
-    - UserDetailsEntry
+    - Pack
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
@@ -32,10 +30,9 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/GameOpening.unity:
+    Assets/Scenes/PlayGame.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -57,8 +54,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2204}
     - Class: 114
-      Script: {instanceID: 2318}
-    - Class: 114
       Script: {instanceID: 2620}
     - Class: 114
       Script: {instanceID: 2780}
@@ -67,9 +62,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3240}
     - Class: 114
-      Script: {instanceID: 3354}
+      Script: {instanceID: 3276}
     - Class: 114
-      Script: {instanceID: 5578}
+      Script: {instanceID: 3354}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -78,58 +73,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    Assets/Scenes/UseerDetails.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1514}
-    - Class: 114
-      Script: {instanceID: 2204}
-    - Class: 114
-      Script: {instanceID: 2318}
-    - Class: 114
-      Script: {instanceID: 2620}
-    - Class: 114
-      Script: {instanceID: 2780}
-    - Class: 114
-      Script: {instanceID: 2996}
-    - Class: 114
-      Script: {instanceID: 3054}
-    - Class: 114
-      Script: {instanceID: 3240}
-    - Class: 114
-      Script: {instanceID: 3354}
-    - Class: 114
-      Script: {instanceID: 3812}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -382,7 +326,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: a1da42329bf7796aef5b49739c0650d5
+      Hash: ca4251acf0cab2e0b3c12abca136baf3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Pack
@@ -688,6 +632,5 @@ ScriptsOnlyBuild:
     className: GameStartScript
   platform: 19
   scenePathNames:
-  - Assets/Scenes/GameOpening.unity
-  - Assets/Scenes/UseerDetails.unity
+  - Assets/Scenes/PlayGame.unity
   playerPath: C:/Users/peter/source/repos/SimpleCardGame/SimpleCardGame/TestPlayGame/SimpleCardGame.exe

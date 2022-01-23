@@ -10,6 +10,7 @@ public class Pack : MonoBehaviour
     TextReader tr;
     public Text display,secondTest;
     List<TTCard> ttCards;
+   // List<TTCard> ttSaved;
     public Sprite [] sprites;
     //int imageNo;
     int countOfImages;
@@ -27,6 +28,8 @@ public class Pack : MonoBehaviour
     int cardsToDeal;
     public GameObject dealButton;
     public GameObject playButton;
+    public GameObject nextButton;
+    public GameObject newGameButton;
     int totalPlayerNumbers = 2;
     int playerToDealTo = 0;
     GameObject dealingCard;
@@ -40,6 +43,14 @@ public class Pack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        NewGame();
+        
+    }
+
+    void NewGame()
+    {
+        newGameButton.SetActive(false);
+        secondTest.text = "";
         countOfImages = sprites.Length;
         cardDealAnimation = false;
         cardDealt = false;
@@ -51,13 +62,14 @@ public class Pack : MonoBehaviour
         spriteRenderer = cardSprite.GetComponent<SpriteRenderer>();
         //spriteRenderer.sprite = sprites[0];
         ttCards = new List<TTCard>();
+        //ttSaved = new List<TTCard>();
         playerHand = new List<TTCard>();
         playerHandCardObjects = new List<GameObject>();
         computerHandCardObjects = new List<GameObject>();
         computerHand = new List<TTCard>();
         tr = new StreamReader("C:/Users/peter/source/repos/SimpleCardGame/SimpleCardGame/Assets/GameDefinitions.csv");
         string input;
-       
+
         input = tr.ReadLine();
         string propertyBit = input.Substring(19);
         //Bug found probably the index is wrong. As a test I will display propertyBit to see
@@ -66,29 +78,28 @@ public class Pack : MonoBehaviour
         //display.text = "The Property Bit " + propertyBit + "\n";
         //now reverting to previous example so back to 19
         propertyNames = propertyBit.Split(',');
-       // int i = propertyNames.Length;
-       //display.text += "Card Number\tCard Name\t" ;
-       
-        // display.text += "\n";
+        // int i = propertyNames.Length;
+        //display.text += "Card Number\tCard Name\t" ;
+
+        /* display.text += "\n";
         foreach (string s in propertyNames)
             display.text += s + ",";
         display.text += "\n";/* */
-        while ((input=tr.ReadLine())!= null)
+        while ((input = tr.ReadLine()) != null)
         {
             CreateACardFromTheFileDescription(input);
         }
         tr.Close();
         cardsToDeal = ttCards.Count;
         cardsDealt = 0;
+        dealButton.SetActive(true);
         /*
         foreach(TTCard tTCard in ttCards)
         {
             display.text += "Bird " + tTCard.CardName() + " Best Property " + propertyNames[tTCard.BestPropertyNumber()];
             display.text += " number " + tTCard.BestPropertyNumber() + " value " + tTCard.BestPropertyValue() + "\n";
         }*/
-        
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -142,7 +153,41 @@ public class Pack : MonoBehaviour
         } 
             
     }
+    public void OnNextButton()
+    {
+        foreach (GameObject gob in choiceButtons)
+            gob.SetActive(false);
+        if (tie)
+        {
+            MoveDrawCardsToBottom();
+            if (goNumber == 0) goNumber = 1;
+            else goNumber = 0;
+        }
+        else
+        {
+            if (computerWin)
+            {
+                MovePlayerTopToComputerBottom();
+                goNumber = 1;
+            }
+            else
+            {
+                MoveComputerTopPlayerBottom();
+                goNumber = 0;
+            }
+        }
+        if (playerHand.Count == 0 || computerHand.Count == 0)
+        {
+            EndGame();
+        }
+        else
+        {
+            nextButton.SetActive(false);
+            playButton.SetActive(true);
+            display.text = " You have " + playerHand.Count + "\nCards Computer has " + computerHand.Count;
 
+        }
+    }
     void CreateACardFromTheFileDescription(string input)
     {
         string[] content = input.Split(',');
@@ -174,25 +219,53 @@ public class Pack : MonoBehaviour
     */
     void ComputerGo()
     {
-        goNumber = 0;
-    }
-    void OnClearUP () {
-        if (choiceClicked)
+        int i = playerHandCardObjects.Count - 1;
+        playerHandCardObjects[i].transform.position = playerShow;
+        playerHandCardObjects[i].SetActive(true);
+        int k = computerHandCardObjects.Count - 1;
+        computerHandCardObjects[k].transform.position = computerShow;
+        computerHandCardObjects[k].SetActive(true);
+        int choice = computerHand[k].BestPropertyNumber();
+        int cv = computerHand[k].BestPropertyValue();
+        secondTest.text = "Computer chooses " + propertyNames[choice];
+        int v = playerHand[i].CardPropertyValue(choice);
+        if(v > cv)
         {
-
+            display.text = "\n You win that one";
+            playerWin = true;
+            tie = computerWin = false;
+            
         }
-
+        else
+        {
+            if(cv > v)
+            {
+                display.text = "Computer wins that one";
+                computerWin = true;
+                tie = playerWin = false;
+                
+            }
+            else
+            {
+                display.text = "It's a draw!";
+                tie = true;
+                computerWin = playerWin = false;
+                
+            }
+        }
+        nextButton.SetActive(true);
     }
+   
     public void OnChoiceClick(int i)
     {
         int ct = computerHandCardObjects.Count -1;
         computerHandCardObjects[ct].SetActive(true);
         computerHandCardObjects[ct].transform.position = computerShow;
-        secondTest.text += "\nCard property choice " + i;
-        secondTest.text += "\nProperty name " + propertyNames[i];
+        //secondTest.text += "\nCard property choice " + i;
+        //secondTest.text += "\nProperty name " + propertyNames[i];
         int j = playerHand.Count - 1;
         int v = playerHand[j].CardPropertyValue(i);
-        secondTest.text += "\nProperty value " + v;
+        //secondTest.text += "\nProperty value " + v;
         int k = computerHand.Count - 1;
         choiceClicked = true;
        // Vector3 pos = computerHandCardObjects[k].transform.position;
@@ -200,84 +273,108 @@ public class Pack : MonoBehaviour
         //computerHandCardObjects[k].transform.position = pos;
         //computerHandCardObjects[k].SetActive(true);
         int cv = computerHand[k].CardPropertyValue(i);
-        secondTest.text += "\nComputer's value for " + propertyNames[i] + "is " + cv;
+        //secondTest.text += "\nComputer's value for " + propertyNames[i] + "is " + cv;
+        computerHandCardObjects[k].SetActive(true);
+
         if(v > cv)
         {
-            display.text += "\nYou win that one";
+            display.text = "You win that one";
             playerWin = true;
             computerWin = tie = false;
-            goNumber = 0;
-            TTCard cardWon = computerHand[k];
-            computerHand.RemoveAt(k);
-            playerHand.Insert(0, cardWon);
-            GameObject oldTopObject = playerHandCardObjects[playerHandCardObjects.Count - 1];
-            GameObject cardWonObject = computerHandCardObjects[k];
-            computerHandCardObjects.RemoveAt(k);
-            playerHandCardObjects.RemoveAt(playerHandCardObjects.Count - 1);
-            playerHandCardObjects.Insert(0, cardWonObject);
-            playerHandCardObjects.Insert(0, oldTopObject);
-            int top = playerHand.Count - 1;
-            TTCard oldTop = playerHand[top];
-            playerHand.RemoveAt(top);
-            playerHand.Insert(0, oldTop);
-            oldTopObject.SetActive(false);
-            cardWonObject.SetActive(false);
+            
+            
         }
         else
         {
             if(cv > v)
             {
-                display.text += "\nYou lose that one";
+                display.text = "Computer wins that one";
                 computerWin = true;
                 playerWin = tie = false;
-                goNumber = 1;
-                int ib = playerHand.Count - 1;
-                TTCard cardWon = playerHand[ib];
-                playerHand.RemoveAt(ib);
-                computerHand.Insert(0, cardWon);
-                GameObject oldTopObject = computerHandCardObjects[k];
-                GameObject cardWonObject = playerHandCardObjects[ib];
-                playerHandCardObjects.RemoveAt(ib);
-                computerHandCardObjects.RemoveAt(k);
-                computerHandCardObjects.Insert(0, cardWonObject);
-                computerHandCardObjects.Insert(0, oldTopObject);
-                int top = computerHand.Count - 1;
-                TTCard oldTop = computerHand[top];
-                computerHand.RemoveAt(top);
-                computerHand.Insert(0, oldTop);
-                oldTopObject.SetActive(false);
-                cardWonObject.SetActive(false);
+                
+                
 
             }
             else
             {
-                display.text += "\nThat one is a draw";
-                int handTop = playerHand.Count - 1;
-                TTCard playerTop = playerHand[handTop];
-                GameObject playerCard = playerHandCardObjects[handTop];
-                playerHand.RemoveAt(handTop);
-                playerHand.Insert(0, playerTop);
-                playerHandCardObjects.RemoveAt(handTop);
-                playerHandCardObjects.Insert(0, playerCard);
-                handTop = computerHand.Count - 1;
-                TTCard computerTop = computerHand[handTop];
-                GameObject computerCard = computerHandCardObjects[handTop];
-                computerHand.RemoveAt(handTop);
-                computerHand.Insert(0, computerTop);
-               
-                computerHandCardObjects.RemoveAt(handTop);
-                computerHandCardObjects.Insert(0, computerCard);
-                computerCard.SetActive(false);
-                playerCard.SetActive(false);
-                playerWin = computerWin = false;
+                display.text = "That one is a draw";
                 tie = true;
-                goNumber = 1;
+                playerWin = computerWin = false;
+
             }
             
         }
+        playButton.SetActive(false);
+        nextButton.SetActive(true);
+    }
+    void MoveDrawCardsToBottom()
+    {
+        //int k = computerHand.Count - 1;
+        int handTop = playerHand.Count - 1;
+        TTCard playerTop = playerHand[handTop];
+        GameObject playerCard = playerHandCardObjects[handTop];
+        playerHand.RemoveAt(handTop);
+        playerHand.Insert(0, playerTop);
+        playerHandCardObjects.RemoveAt(handTop);
+        playerHandCardObjects.Insert(0, playerCard);
+        handTop = computerHand.Count - 1;
+        TTCard computerTop = computerHand[handTop];
+        GameObject computerCard = computerHandCardObjects[handTop];
+        computerHand.RemoveAt(handTop);
+        computerHand.Insert(0, computerTop);
+
+        computerHandCardObjects.RemoveAt(handTop);
+        computerHandCardObjects.Insert(0, computerCard);
+        computerCard.SetActive(false);
+        playerCard.SetActive(false);
+    }
+    public void MoveComputerTopPlayerBottom()
+    {
+        int k = computerHand.Count - 1;
+
+        TTCard cardWon = computerHand[k];
+        computerHand.RemoveAt(k);
+        playerHand.Insert(0, cardWon);
+        GameObject oldTopObject = playerHandCardObjects[playerHandCardObjects.Count - 1];
+        GameObject cardWonObject = computerHandCardObjects[k];
+        computerHandCardObjects.RemoveAt(k);
+        playerHandCardObjects.RemoveAt(playerHandCardObjects.Count - 1);
+        playerHandCardObjects.Insert(0, cardWonObject);
+        playerHandCardObjects.Insert(0, oldTopObject);
+        int top = playerHand.Count - 1;
+        TTCard oldTop = playerHand[top];
+        playerHand.RemoveAt(top);
+        playerHand.Insert(0, oldTop);
+        oldTopObject.SetActive(false);
+        cardWonObject.SetActive(false);
+        goNumber = 0;
+    }
+    void MovePlayerTopToComputerBottom()
+    {
+        int ib = playerHand.Count - 1;
+        int k = computerHand.Count - 1;
+
+        TTCard cardWon = playerHand[ib];
+        playerHand.RemoveAt(ib);
+        computerHand.Insert(0, cardWon);
+        GameObject oldTopObject = computerHandCardObjects[k];
+        GameObject cardWonObject = playerHandCardObjects[ib];
+        playerHandCardObjects.RemoveAt(ib);
+
+        computerHandCardObjects.RemoveAt(k);
+        computerHandCardObjects.Insert(0, cardWonObject);
+        computerHandCardObjects.Insert(0, oldTopObject);
+        int top = computerHand.Count - 1;
+        TTCard oldTop = computerHand[top];
+        computerHand.RemoveAt(top);
+        computerHand.Insert(0, oldTop);
+        oldTopObject.SetActive(false);
+        cardWonObject.SetActive(false);
+        goNumber = 1;
     }
     public void OnClickPlay()
     {
+        secondTest.text = "";
         if (computerHand.Count > 0 && playerHand.Count > 0)
         {
             int k = computerHand.Count - 1;
@@ -304,12 +401,25 @@ public class Pack : MonoBehaviour
         }
         else
         {
-            playButton.SetActive(false);
-            display.text = "You have " + playerHand.Count + " cards and computer has " +
-                computerHand.Count + " cards. Game Over";
+            EndGame();
         }
     }
-
+    void EndGame()
+    {
+        playButton.SetActive(false);
+        nextButton.SetActive(false);
+        display.text = "You have " + playerHand.Count + " cards and computer has " +
+            computerHand.Count + " cards. Game Over";
+        if (playerHand.Count > computerHand.Count)
+        {
+            display.text += "\nYou Win";
+        }
+        else
+        {
+            display.text += "\nComputer Wins";
+        }
+        newGameButton.SetActive(true);
+    }
     void DealACard()
     {
         System.Random r = new System.Random();
@@ -377,5 +487,9 @@ public class Pack : MonoBehaviour
 
         cardDealAnimation = true;
         dealButton.SetActive(false);
+    }
+    public void OnNewGameButton()
+    {
+        NewGame();
     }
 }
