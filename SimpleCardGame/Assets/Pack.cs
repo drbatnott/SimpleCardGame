@@ -21,9 +21,10 @@ public class Pack : MonoBehaviour
     public List<TTCard> computerHand;
     List<GameObject> playerHandCardObjects;
     List<GameObject> computerHandCardObjects;
-    float speed = 0.05f;
+    public float speed;// = 0.05f;
     public Vector3 cardPosOnTable;
     int cardsDealt;
+    int cardsToDeal;
     public GameObject dealButton;
     public GameObject playButton;
     int totalPlayerNumbers = 2;
@@ -34,13 +35,15 @@ public class Pack : MonoBehaviour
     bool cardDealt;
     int goNumber;
     bool playerWin, computerWin, tie;
-    public Vector3 playerShow,computerShow;
+    bool choiceClicked;
+    public Vector3 playerShow,computerShow,playerHome,computerHome;
     // Start is called before the first frame update
     void Start()
     {
         countOfImages = sprites.Length;
         cardDealAnimation = false;
         cardDealt = false;
+        choiceClicked = false;
         playerWin = computerWin = tie = false;
         goNumber = 0;
         //imageNo = 0;
@@ -75,6 +78,8 @@ public class Pack : MonoBehaviour
             CreateACardFromTheFileDescription(input);
         }
         tr.Close();
+        cardsToDeal = ttCards.Count;
+        cardsDealt = 0;
         /*
         foreach(TTCard tTCard in ttCards)
         {
@@ -101,10 +106,10 @@ public class Pack : MonoBehaviour
         
         if (cardDealAnimation)
         {
-            Vector3 targetPosition = cardPosOnTable;
-            if (playerToDealTo == 0)
+            Vector3 targetPosition = playerHome;
+            if (playerToDealTo == 1)
             {
-                targetPosition.y = -cardPosOnTable.y;
+                targetPosition = computerHome;//.y = -cardPosOnTable.y;
             }
             if(!cardDealt && ttCards.Count > 0)
                 DealACard();
@@ -123,8 +128,14 @@ public class Pack : MonoBehaviour
                     playerToDealTo = 0;
                 if (ttCards.Count == 0)
                 {
+                    
                     cardDealAnimation = false;
                     playButton.SetActive(true);
+                }
+                cardsDealt++;
+                if (cardsDealt == cardsToDeal)
+                {
+                    cardSprite.SetActive(false);
                 }
             }
             
@@ -165,6 +176,13 @@ public class Pack : MonoBehaviour
     {
         goNumber = 0;
     }
+    void OnClearUP () {
+        if (choiceClicked)
+        {
+
+        }
+
+    }
     public void OnChoiceClick(int i)
     {
         int ct = computerHandCardObjects.Count -1;
@@ -176,10 +194,11 @@ public class Pack : MonoBehaviour
         int v = playerHand[j].CardPropertyValue(i);
         secondTest.text += "\nProperty value " + v;
         int k = computerHand.Count - 1;
-        Vector3 pos = computerHandCardObjects[k].transform.position;
-        pos.x += 3f;
-        computerHandCardObjects[k].transform.position = pos;
-        computerHandCardObjects[k].SetActive(true);
+        choiceClicked = true;
+       // Vector3 pos = computerHandCardObjects[k].transform.position;
+        //pos.x += 3f;
+        //computerHandCardObjects[k].transform.position = pos;
+        //computerHandCardObjects[k].SetActive(true);
         int cv = computerHand[k].CardPropertyValue(i);
         secondTest.text += "\nComputer's value for " + propertyNames[i] + "is " + cv;
         if(v > cv)
@@ -254,19 +273,23 @@ public class Pack : MonoBehaviour
                 tie = true;
                 goNumber = 1;
             }
-            computerHandCardObjects[k].SetActive(false);
-            playerHandCardObjects[playerHandCardObjects.Count - 1].SetActive(false);
+            
         }
     }
     public void OnClickPlay()
     {
         if (computerHand.Count > 0 && playerHand.Count > 0)
         {
+            int k = computerHand.Count - 1;
+            computerHandCardObjects[k].SetActive(false);
+            computerHandCardObjects[0].SetActive(false);
+            playerHandCardObjects[0].SetActive(false);
             if (goNumber == 0)
             {
                 int i = playerHand.Count - 1;
                 Vector3 pos = playerShow;// playerHandCardObjects[i].transform.position;
                 //pos.x += 3f;
+
                 playerHandCardObjects[i].transform.position = pos;
                 playerHandCardObjects[i].SetActive(true);
                 foreach (GameObject b in choiceButtons)
@@ -292,7 +315,7 @@ public class Pack : MonoBehaviour
         System.Random r = new System.Random();
         int cardToDeal = r.Next(0, ttCards.Count);
         //spriteRenderer.sprite = sprites[cardToDeal];
-        cardsDealt++;
+        
         //display.text += "\nCards Dealt " + cardsDealt;
         //display.text += "\nchosen card " + cardToDeal;
 
@@ -334,6 +357,7 @@ public class Pack : MonoBehaviour
             computerHandCardObjects.Add(newCard);
         }
         newCard.SetActive(false);
+        
         //remove the card from the pack
         ttCards.RemoveAt(cardToDeal);
         //Test that we have one less card in the pack and one card in the hand

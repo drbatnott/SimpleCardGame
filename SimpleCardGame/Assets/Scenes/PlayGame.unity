@@ -1462,6 +1462,7 @@ MonoBehaviour:
   - {fileID: 5946918704796949760, guid: 7ce0023edc98a0d4a96e91e61159aab0, type: 3}
   cardSprite: {fileID: 1248761560}
   prototypeCard: {fileID: 3349277468768552611, guid: a17b9da77adfc084589cb53326fb08bd, type: 3}
+  speed: 0.25
   cardPosOnTable: {x: 0, y: -3.5, z: 0}
   dealButton: {fileID: 1244233265}
   playButton: {fileID: 1474622744}
@@ -1473,6 +1474,8 @@ MonoBehaviour:
   - {fileID: 953106469}
   playerShow: {x: 3.3, y: -3.6, z: 0}
   computerShow: {x: 3.3, y: 3.6, z: 0}
+  playerHome: {x: 0, y: -3.6, z: 0}
+  computerHome: {x: 0, y: 3.6, z: 0}
 --- !u!114 &1335068768
 MonoBehaviour:
   m_ObjectHideFlags: 0
