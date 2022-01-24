@@ -30,7 +30,7 @@ public class Pack : MonoBehaviour
     public GameObject playButton;
     public GameObject nextButton;
     public GameObject newGameButton;
-    int totalPlayerNumbers = 2;
+    //int totalPlayerNumbers = 2;
     int playerToDealTo = 0;
     GameObject dealingCard;
     bool cardDealAnimation;
@@ -40,11 +40,15 @@ public class Pack : MonoBehaviour
     bool playerWin, computerWin, tie;
     bool choiceClicked;
     public Vector3 playerShow,computerShow,playerHome,computerHome;
+    string[] content = {"ImageName,cardname,stories,running,sleeping,jokes,overall","0,Tilly,4,6,3,6,6",
+        "1,Incy Wincy,6,10,7,2,5","2,Cookie,2,10,9,6,8","3,Bunny,10,10,7,5,8","4,Aunt Jane,3,4,8,5,5",
+        "5,Grandad,8,2,3,1,4","6,Mum,10,3,5,4,7","7,Evie,8,5,9,3,7","8,Ivy,6,6,6,3,5","9,Uncle John,5,5,10,2,6"
+    };
     // Start is called before the first frame update
     void Start()
     {
-        NewGame();
         
+        NewGame();
     }
 
     void NewGame()
@@ -67,10 +71,11 @@ public class Pack : MonoBehaviour
         playerHandCardObjects = new List<GameObject>();
         computerHandCardObjects = new List<GameObject>();
         computerHand = new List<TTCard>();
-        tr = new StreamReader("C:/Users/peter/source/repos/SimpleCardGame/SimpleCardGame/Assets/GameDefinitions.csv");
+        //tr = new StreamReader("New.csv");//"C:/Users/peter/source/repos/SimpleCardGame/SimpleCardGame/Assets/GameDefinitions.csv");
         string input;
 
-        input = tr.ReadLine();
+        input = content[0];//tr.ReadLine();
+        //content.Add(input);
         string propertyBit = input.Substring(19);
         //Bug found probably the index is wrong. As a test I will display propertyBit to see
         //It should have been 13 first I changed it to 12 but that was also wrong I forgot about the tab.
@@ -85,11 +90,23 @@ public class Pack : MonoBehaviour
         foreach (string s in propertyNames)
             display.text += s + ",";
         display.text += "\n";/* */
-        while ((input = tr.ReadLine()) != null)
+        //while ((input = tr.ReadLine()) != null)
+        for (int posInContent = 1; posInContent < content.Length; posInContent++) 
         {
+            //content.Add(input);
+            input = content[posInContent];
             CreateACardFromTheFileDescription(input);
         }
-        tr.Close();
+        //tr.Close();
+        /*
+        TextWriter tw = new StreamWriter("New.csv");
+        foreach (string c in content)
+        {
+            tw.WriteLine(c);
+            display.text += c + "\n";
+        }
+        tw.Close();
+        */
         cardsToDeal = ttCards.Count;
         cardsDealt = 0;
         dealButton.SetActive(true);
